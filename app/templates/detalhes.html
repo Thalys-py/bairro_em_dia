@@ -1,0 +1,112 @@
+<!DOCTYPE html> 
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Detalhes da Solicitação</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <div class="max-w-3xl mx-auto px-4 py-10">
+    <div class="bg-yellow-100 border border-yellow-300 text-yellow-800 rounded px-4 py-3 mb-6 text-sm">
+      Sua solicitação foi registrada com sucesso. <strong>Anote o número do protocolo abaixo</strong> para acompanhar o andamento.
+    </div>
+
+    <h1 class="text-2xl font-bold text-blue-900 mb-6">Detalhes da Solicitação</h1>
+
+    <div class="bg-white shadow rounded p-6 space-y-4">
+      <div>
+        <p class="text-sm text-gray-500">Protocolo:</p>
+        <p class="font-semibold">{{ s.protocolo }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Título:</p>
+        <p>{{ s.titulo }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Categoria:</p>
+        <p>{{ s.categoria }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Endereço:</p>
+        <p>{{ s.endereco }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Urgência:</p>
+        <p>{{ s.urgencia }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Status:</p>
+        <span class="inline-block text-sm font-medium px-2 py-1 rounded
+          {% if s.status == 'Resolvido' %}
+            bg-green-100 text-green-700
+          {% elif s.status == 'Em Andamento' %}
+            bg-gray-800 text-white
+          {% else %}
+            bg-gray-200 text-gray-700
+          {% endif %}
+        ">
+          {{ s.status or "Pendente" }}
+        </span>
+      </div>
+
+      {% if s.descricao %}
+      <div>
+        <p class="text-sm text-gray-500">Descrição:</p>
+        <p class="whitespace-pre-wrap">{{ s.descricao }}</p>
+      </div>
+      {% endif %}
+
+      {% if s.foto %}
+      <div>
+        <p class="text-sm text-gray-500 mb-1">Foto:</p>
+        <img src="/uploads/{{ s.foto }}" alt="Imagem da solicitação" class="max-w-full rounded border">
+      </div>
+      {% endif %}
+
+      {% if s.nome %}
+      <div>
+        <p class="text-sm text-gray-500">Nome do Solicitante:</p>
+        <p>{{ s.nome }}</p>
+      </div>
+      {% endif %}
+
+      {% if s.telefone %}
+      <div>
+        <p class="text-sm text-gray-500">Telefone:</p>
+        <p>{{ s.telefone }}</p>
+      </div>
+      {% endif %}
+
+      {% if s.email %}
+      <div>
+        <p class="text-sm text-gray-500">E-mail:</p>
+        <p>{{ s.email }}</p>
+      </div>
+      {% endif %}
+
+      {% if s.acompanhamentos %}
+      <div>
+        <p class="text-sm text-gray-500">Acompanhamentos:</p>
+        <pre class="whitespace-pre-wrap bg-gray-100 rounded p-3 text-sm border">{{ s.acompanhamentos }}</pre>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="mt-6">
+      {% if autenticado %}
+        <a href="/painel" class="text-blue-700 hover:underline text-sm">← Voltar para o Painel</a>
+      {% else %}
+        <a href="/" class="text-blue-700 hover:underline text-sm">← Voltar para a Página Inicial</a>
+      {% endif %}
+    </div>
+  </div>
+
+</body>
+</html>

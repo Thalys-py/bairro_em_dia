@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova Solicitação - Bairro em Dia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <div class="max-w-2xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold text-center text-blue-900 mb-8">Registrar nova solicitação</h1>
+
+    {% if erro %}
+      <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
+        {{ erro }}
+      </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="space-y-6 bg-white p-6 rounded shadow">
+
+      <div>
+        <label class="block font-medium mb-1" for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="categoria">Categoria</label>
+        <select id="categoria" name="categoria" required class="w-full border border-gray-300 rounded px-3 py-2">
+          <option value="">Selecione uma categoria</option>
+          <option value="Apoio Social / Assistência">Apoio Social / Assistência</option>
+          <option value="Buracos / Pavimentação">Buracos / Pavimentação</option>
+          <option value="Calçadas / Acessibilidade">Calçadas / Acessibilidade</option>
+          <option value="Coleta de Lixo">Coleta de Lixo</option>
+          <option value="Construções Públicas">Construções Públicas</option>
+          <option value="Creches / Escolas Municipais">Creches / Escolas Municipais</option>
+          <option value="Drenagem / Esgoto">Drenagem / Esgoto</option>
+          <option value="Eventos Comunitários">Eventos Comunitários</option>
+          <option value="Falta de Iluminação">Falta de Iluminação</option>
+          <option value="Limpeza de Ruas / Entulhos">Limpeza de Ruas / Entulhos</option>
+          <option value="Lombadas / Faixa de Pedestre">Lombadas / Faixa de Pedestre</option>
+          <option value="Manutenção de Praças / Jardins">Manutenção de Praças / Jardins</option>
+          <option value="Patrulhamento / Ronda">Patrulhamento / Ronda</option>
+          <option value="Podas / Arborização">Podas / Arborização</option>
+          <option value="Poluição / Queimadas">Poluição / Queimadas</option>
+          <option value="Roçada / Capina">Roçada / Capina</option>
+          <option value="Sinalização de Trânsito">Sinalização de Trânsito</option>
+          <option value="Sugestões / Outros">Sugestões / Outros</option>
+          <option value="Vandalismo / Depredação">Vandalismo / Depredação</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="endereco">Endereço</label>
+        <input type="text" id="endereco" name="endereco" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="urgencia">Urgência</label>
+        <select id="urgencia" name="urgencia" required class="w-full border border-gray-300 rounded px-3 py-2">
+          <option value="Baixa">Baixa</option>
+          <option value="Média">Média</option>
+          <option value="Alta">Alta</option>
+        </select>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="descricao">Descrição</label>
+        <textarea id="descricao" name="descricao" rows="4" class="w-full border border-gray-300 rounded px-3 py-2"></textarea>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="foto">Foto (opcional)</label>
+        <input type="file" id="foto" name="foto" class="w-full">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="nome">Nome do Solicitante</label>
+        <input type="text" id="nome" name="nome" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="telefone">Telefone</label>
+        <input type="text" id="telefone" name="telefone" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1" for="email">E-mail</label>
+        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-3 py-2">
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="bg-blue-900 text-white font-semibold px-6 py-2 rounded hover:bg-blue-800">
+          Enviar Solicitação
+        </button>
+      </div>
+
+    </form>
+
+    <div class="text-center mt-6">
+      <a href="/" class="text-blue-700 hover:underline">← Voltar para a página inicial</a>
+    </div>
+  </div>
+
+</body>
+</html>
